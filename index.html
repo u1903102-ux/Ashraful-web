@@ -70,7 +70,25 @@
         .sidebar p {
             font-size: 0.9rem;
             color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-cv {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
             margin-bottom: 2rem;
+            transition: background-color 0.2s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .btn-cv:hover {
+            background-color: var(--accent);
         }
 
         .nav-menu {
@@ -196,6 +214,24 @@
         .timeline-date { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
         .timeline-subtitle { font-style: italic; color: var(--text-light); margin-bottom: 0.5rem; display: block; }
         
+        .transcript-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+        
+        .transcript-link:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
         /* --- Publications --- */
         .pub-item {
             margin-bottom: 1.5rem;
@@ -240,11 +276,14 @@
 
     <!-- Sidebar Profile -->
     <aside class="sidebar">
-        <!-- MAKE SURE image_fbaf49.jpg IS IN THE SAME FOLDER -->
-        <img src="image_fbaf49.jpg" alt="Mohammad Ashraful Islam" class="profile-img">
+        <!-- UPDATED: Profile Image with ?raw=true to ensure it displays -->
+        <img src="https://github.com/u1903102-ux/Ashraful-web/blob/main/profile.jpg.jpg?raw=true" alt="Mohammad Ashraful Islam" class="profile-img">
         
         <h1>Mohammad<br>Ashraful Islam</h1>
         <p>Mechanical Engineer<br>Research Assistant</p>
+
+        <!-- UPDATED: Added CV Download Button -->
+        <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/MD_ASHRAFUL_ISLAM_CV.pdf" target="_blank" class="btn-cv">Download CV</a>
 
         <ul class="nav-menu">
             <li><a href="#about">About Me</a></li>
@@ -319,6 +358,9 @@
                 <span class="timeline-subtitle">Chittagong University of Engineering & Technology (CUET)</span>
                 <p>CGPA: 3.45 / 4.00 (Last two semesters: 3.84/4.00)</p>
                 <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">• Merit Scholarship Recipient</p>
+                
+                <!-- UPDATED: Added Transcript Link -->
+                <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/Academic_Transcript.pdf" target="_blank" class="transcript-link">View Academic Transcript →</a>
             </div>
 
             <!-- Job 1 -->

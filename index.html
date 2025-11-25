@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammad Ashraful Islam | Research Portfolio</title>
+    <!-- Importing Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Importing a professional academic font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --sidebar-width: 300px;
             /* Ice Blue Theme Colors */
             --primary-color: #006064; /* Cyan 900 */
-            --text-dark: #1f2937;
-            --text-light: #546e7a;    /* Blue Grey 600 */
+            --text-dark: #1e293b;
+            --text-light: #475569;
             --bg-light: #e0f7fa;      /* Ice Blue */
             --white: #ffffff;
             --accent: #00acc1;        /* Cyan 600 */
+            --border-color: #b2ebf2;
         }
 
         * {
@@ -53,13 +56,14 @@
             position: fixed;
             left: 0;
             top: 0;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-right: 1px solid #b2ebf2;
+            border-right: 1px solid var(--border-color);
             text-align: center;
             z-index: 10;
+            overflow-y: auto; /* Allow scrolling if content is too tall */
         }
 
         .profile-img {
@@ -70,23 +74,23 @@
             object-position: top center;
             margin-bottom: 1.5rem;
             border: 4px solid var(--bg-light);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         .sidebar h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             line-height: 1.2;
             margin-bottom: 0.5rem;
             color: var(--primary-color);
         }
 
-        /* Container for the dynamic text */
+        /* Dynamic Text Container */
         .sidebar p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-light);
-            margin-bottom: 1.5rem;
-            min-height: 2em; /* Ensure enough height so text isn't clipped */
+            margin-bottom: 2rem;
+            min-height: 1.5em;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -94,10 +98,9 @@
             width: 100%; 
         }
         
-        /* UPDATED: Horizontal Slide Animation Styles */
         #dynamic-role {
             display: inline-block;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--accent);
             transform: translateX(0);
             opacity: 1;
@@ -105,76 +108,83 @@
             white-space: nowrap;
         }
 
-        /* Animation State: Slide Out to Right */
-        #dynamic-role.exit-right {
-            transform: translateX(60px);
-            opacity: 0;
-        }
-        
-        /* Animation State: Start Position Left */
-        #dynamic-role.entry-left {
-            transform: translateX(-60px);
-            opacity: 0;
-        }
+        #dynamic-role.exit-right { transform: translateX(60px); opacity: 0; }
+        #dynamic-role.entry-left { transform: translateX(-60px); opacity: 0; }
 
         .btn-cv {
             display: inline-block;
             background-color: var(--primary-color);
             color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px; /* Pill shape */
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
-            margin-bottom: 2rem;
-            transition: background-color 0.2s;
-            box-shadow: 0 2px 4px rgba(0, 96, 100, 0.2);
+            margin-bottom: 2.5rem;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 96, 100, 0.2);
         }
 
         .btn-cv:hover {
             background-color: var(--accent);
+            transform: translateY(-2px);
         }
 
+        /* Nav Menu */
         .nav-menu {
             width: 100%;
             list-style: none;
+            text-align: left;
         }
 
         .nav-menu li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
         }
 
         .nav-menu a {
-            display: block;
-            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
             text-decoration: none;
             color: var(--text-dark);
-            border-radius: 6px;
+            border-radius: 8px;
             transition: all 0.2s;
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
-        .nav-menu a:hover, .nav-menu a.active {
+        .nav-menu a i {
+            margin-right: 12px;
+            color: var(--accent);
+            width: 20px;
+            text-align: center;
+        }
+
+        .nav-menu a:hover {
             background-color: #e0f7fa;
             color: var(--primary-color);
+            transform: translateX(5px);
         }
 
+        /* Contact Info */
         .contact-info {
             margin-top: auto;
             font-size: 0.85rem;
             width: 100%;
             text-align: left;
-            padding-top: 1rem;
-            border-top: 1px solid #b2ebf2;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 8px;
+            gap: 12px;
+            margin-bottom: 10px;
             color: var(--text-light);
         }
+        
+        .contact-item i { color: var(--accent); width: 16px; }
 
         /* --- Main Content Styling --- */
         .main-content {
@@ -184,124 +194,217 @@
         }
 
         section {
-            margin-bottom: 5rem;
+            margin-bottom: 6rem;
             max-width: 900px;
         }
 
         .section-header {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            margin-bottom: 2rem;
-            border-bottom: 2px solid #b2ebf2;
+            margin-bottom: 2.5rem;
+            border-bottom: 3px solid var(--border-color);
             padding-bottom: 0.5rem;
+            display: inline-block;
         }
 
         /* --- About Section --- */
         .about-text {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #374151;
+            color: var(--text-dark);
             margin-bottom: 1.5rem;
             text-align: justify;
         }
 
         .highlight-box {
-            background-color: rgba(224, 247, 250, 0.7); /* Ice Blue transparent */
-            border-left: 4px solid var(--accent);
+            background-color: rgba(224, 247, 250, 0.6);
+            border-left: 5px solid var(--accent);
             padding: 1.5rem;
-            border-radius: 0 8px 8px 0;
+            border-radius: 0 10px 10px 0;
             margin: 2rem 0;
-            backdrop-filter: blur(2px);
+            font-style: italic;
         }
 
-        /* --- Research Grid --- */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+        /* --- Timeline (Education & Experience) --- */
+        .timeline-container {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #cfd8dc;
         }
 
-        .research-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
-            backdrop-filter: blur(4px);
-            border: 1px solid #b2ebf2;
-        }
-        
-        .research-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 15px -3px rgba(0, 172, 193, 0.15); /* Ice glow */
-        }
-
-        .research-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        /* --- Experience & Education --- */
         .timeline-item {
-            background: rgba(255, 255, 255, 0.9);
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 1.5rem;
+        }
+
+        /* The Dot */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px; /* Adjust to center on line */
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background-color: var(--white);
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-card {
+            background: rgba(255, 255, 255, 0.95);
             padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 1.5rem;
-            border: 1px solid #b2ebf2;
-            backdrop-filter: blur(4px);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s;
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 172, 193, 0.15);
         }
 
         .timeline-header {
             display: flex;
             justify-content: space-between;
+            align-items: baseline;
             margin-bottom: 0.5rem;
             flex-wrap: wrap;
         }
 
-        .timeline-title { font-weight: 700; color: var(--text-dark); font-size: 1.1rem; }
-        .timeline-date { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
-        .timeline-subtitle { font-style: italic; color: var(--text-light); margin-bottom: 0.5rem; display: block; }
+        .timeline-title { font-weight: 700; color: var(--primary-color); font-size: 1.15rem; }
+        .timeline-date { 
+            background: #e0f7fa; 
+            color: var(--primary-color); 
+            padding: 2px 8px; 
+            border-radius: 4px; 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+        }
         
-        .transcript-link {
-            display: inline-block;
-            margin-top: 8px;
+        .timeline-subtitle { 
+            font-weight: 500; 
+            color: var(--text-dark); 
+            margin-bottom: 0.5rem; 
+            display: block; 
+        }
+        
+        .timeline-desc { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
+        
+        .timeline-desc ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        
+        .timeline-desc li {
+            margin-bottom: 4px;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 10px;
             font-size: 0.9rem;
             color: var(--accent);
             text-decoration: none;
-            font-weight: 500;
-            border: 1px solid var(--accent);
-            padding: 2px 8px;
-            border-radius: 4px;
+            font-weight: 600;
             transition: all 0.2s;
         }
         
-        .transcript-link:hover {
-            background-color: var(--accent);
-            color: white;
+        .btn-link:hover { text-decoration: underline; color: var(--primary-color); }
+        .btn-link i { margin-right: 5px; }
+
+        /* --- Research Grid & Activity Grid --- */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .research-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+        
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 172, 193, 0.15);
+        }
+
+        .research-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .research-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .research-card p { font-size: 0.95rem; color: var(--text-light); line-height: 1.6; }
+        
+        /* Activity List inside Card */
+        .activity-list {
+            list-style: none;
+        }
+        
+        .activity-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        
+        .activity-list li::before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
 
         /* --- Publications --- */
         .pub-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
             margin-bottom: 1.5rem;
-            padding-left: 1rem;
-            border-left: 3px solid #cfd8dc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .pub-title { font-weight: 600; display: block; margin-bottom: 0.2rem; }
-        .pub-authors { color: var(--text-light); font-size: 0.95rem; }
-        .pub-venue { font-style: italic; color: var(--primary-color); font-size: 0.9rem; }
+        .pub-title { font-weight: 700; display: block; margin-bottom: 0.4rem; color: var(--primary-color); font-size: 1.05rem;}
+        .pub-authors { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.25rem; }
+        .pub-venue { font-style: italic; color: var(--text-light); font-size: 0.9rem; }
 
         /* --- Skills --- */
-        .skill-group { margin-bottom: 1.5rem; }
-        .skill-group h4 { margin-bottom: 0.5rem; font-size: 0.9rem; text-transform: uppercase; color: var(--text-light); letter-spacing: 1px; }
-        .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .skill-group { margin-bottom: 2rem; }
+        .skill-group h4 { 
+            margin-bottom: 0.75rem; 
+            font-size: 0.95rem; 
+            text-transform: uppercase; 
+            color: var(--text-light); 
+            letter-spacing: 1px; 
+            font-weight: 700;
+        }
+        .tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
         .tag {
-            background: #b2ebf2; /* Light Ice */
-            color: #006064;      /* Deep Teal */
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.85rem;
+            background: white;
+            color: var(--primary-color);
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
             font-weight: 500;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
         /* --- Mobile Responsive --- */
@@ -312,12 +415,15 @@
                 height: auto;
                 position: relative;
                 border-right: none;
-                border-bottom: 1px solid #b2ebf2;
-                padding: 1.5rem;
+                border-bottom: 1px solid var(--border-color);
+                padding: 2rem;
             }
             .nav-menu { display: none; }
-            .main-content { margin-left: 0; padding: 2rem; }
+            .main-content { margin-left: 0; padding: 2rem 1.5rem; }
             .contact-info { display: none; }
+            .timeline-container { border-left: none; padding-left: 0; }
+            .timeline-item { padding-left: 0; }
+            .timeline-item::before { display: none; }
         }
     </style>
 </head>
@@ -332,27 +438,32 @@
         
         <h1>Mohammad<br>Ashraful Islam</h1>
         
-        <!-- Wrapper for slide effect -->
+        <!-- Dynamic Role -->
         <p>
             <span id="dynamic-role">Mechanical Engineer</span>
         </p>
 
-        <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/MD_ASHRAFUL_ISLAM_CV.pdf" target="_blank" class="btn-cv">Download CV</a>
+        <!-- FIX: Added ?raw=true to ensure download -->
+        <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/MD_ASHRAFUL_ISLAM_CV.pdf?raw=true" class="btn-cv"><i class="fas fa-download" style="margin-right: 8px;"></i> Download CV</a>
 
         <ul class="nav-menu">
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#research">Research Interests</a></li>
-            <li><a href="#education">Education & Exp.</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> About Me</a></li>
+            <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
+            <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+            <li><a href="#activities"><i class="fas fa-users"></i> Activities</a></li>
+            <li><a href="#research"><i class="fas fa-microscope"></i> Research</a></li>
+            <li><a href="#publications"><i class="fas fa-book-open"></i> Publications</a></li>
+            <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
         </ul>
 
         <div class="contact-info">
-            <div class="contact-item">📧 ashrafulislam1903102@gmail.com</div>
-            <div class="contact-item">📞 +880 1863-092843</div>
-            <div class="contact-item">📍 Chittagong, Bangladesh</div>
+            <div class="contact-item"><i class="fas fa-envelope"></i> ashrafulislam1903102@gmail.com</div>
+            <div class="contact-item"><i class="fas fa-phone"></i> +880 1863-092843</div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> Chittagong, Bangladesh</div>
             <div class="contact-item" style="margin-top: 10px;">
-                <a href="https://www.linkedin.com/in/ashraful-islam-016655200" style="color:var(--accent); text-decoration: none;">View LinkedIn Profile →</a>
+                <a href="https://www.linkedin.com/in/ashraful-islam-016655200" style="color:var(--accent); text-decoration: none; display: flex; align-items: center;">
+                    <i class="fab fa-linkedin" style="font-size: 1.2rem; margin-right: 5px;"></i> LinkedIn Profile
+                </a>
             </div>
         </div>
     </aside>
@@ -372,7 +483,127 @@
             </p>
 
             <div class="highlight-box">
-                <strong>Current Focus:</strong> Numerical modeling and experimental analysis of Thermo-Catalytic Pyrolysis for bio-fuel production using data-driven optimization.
+                "Driven by data-driven optimization and numerical modeling to solve complex energy challenges."
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <h2 class="section-header">Education</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">B.Sc. in Mechanical Engineering</span>
+                            <span class="timeline-date">Graduated: July 2025</span>
+                        </div>
+                        <span class="timeline-subtitle">Chittagong University of Engineering & Technology (CUET)</span>
+                        <div class="timeline-desc">
+                            <p><strong>CGPA (Last two semesters):</strong> 3.84 / 4.00</p>
+                            <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">• Merit Scholarship Recipient for academic excellence.</p>
+                            
+                            <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/Academic_Transcript.pdf?raw=true" class="btn-link">
+                                <i class="fas fa-file-pdf"></i> View Academic Transcript
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADDED: Secondary & Junior School Info -->
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Secondary & Junior School Education</span>
+                        </div>
+                        <span class="timeline-subtitle">Academic Achievements</span>
+                        <div class="timeline-desc">
+                            <ul>
+                                <li><strong>Secondary School Certificate (SSC):</strong> Secured a GPA of <strong>5.00 / 5.00</strong>.</li>
+                                <li><strong>Junior School Certificate (JSC):</strong> Secured a GPA of <strong>5.00 / 5.00</strong> and achieved <strong>7th place</strong> in the Upazilla merit list.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+            <h2 class="section-header">Experience</h2>
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Research Assistant</span>
+                            <span class="timeline-date">Sep 2025 - Present</span>
+                        </div>
+                        <span class="timeline-subtitle">Bio-Fuel & Energy Lab, CUET</span>
+                        <div class="timeline-desc">
+                            <p>Conducting numerical and experimental investigation of Thermo-Catalytic Pyrolysis. Utilizing data analysis to optimize bio-fuel yield quality and process efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <span class="timeline-title">Industrial Intern & Team Leader</span>
+                            <span class="timeline-date">Feb - Mar 2025</span>
+                        </div>
+                        <span class="timeline-subtitle">Super Petrochemical Limited (SPL)</span>
+                        <div class="timeline-desc">
+                            <p>Led a team of trainees in Naphtha processing operations. Gained hands-on experience in the maintenance and operation of rotating static equipment.</p>
+                            
+                            <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/Super_Petrochemical_Industrial_Attachment.pdf?raw=true" class="btn-link">
+                                <i class="fas fa-certificate"></i> View Industrial Attachment Certificate
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ADDED: Extracurricular Activities Section -->
+        <section id="activities">
+            <h2 class="section-header">Extracurricular Activities</h2>
+            <div class="research-grid">
+                
+                <!-- Leadership -->
+                <div class="research-card">
+                    <i class="fas fa-bullhorn"></i>
+                    <h3>Leadership & Management</h3>
+                    <p>
+                        Led a 3-member team to coordinate the Industrial Tour at <strong>Super Petrochemical Limited</strong>. Managed direct collaboration with plant management to facilitate the visit.
+                    </p>
+                </div>
+
+                <!-- Clubs -->
+                <div class="research-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Technical Clubs</h3>
+                    <ul class="activity-list">
+                        <li>Team Member, <strong>Robo Mechatronics Club</strong></li>
+                        <li>Member, <strong>ASME CUET Student Chapter</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Culture & Volunteering -->
+                <div class="research-card">
+                    <i class="fas fa-theater-masks"></i>
+                    <h3>Culture & Volunteering</h3>
+                    <ul class="activity-list">
+                        <li>Volunteer Member, <strong>Green for Peace</strong></li>
+                        <li>Stage Drama & Theatre, <strong>Joyodhonny Cultural Club</strong></li>
+                    </ul>
+                </div>
+
+                <!-- Skills -->
+                <div class="research-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Personal Interests</h3>
+                    <p>Passionate about <strong>Cooking</strong> and culinary arts as a creative outlet.</p>
+                </div>
+
             </div>
         </section>
 
@@ -381,76 +612,35 @@
             <h2 class="section-header">Research Interests</h2>
             <div class="research-grid">
                 <div class="research-card">
+                    <i class="fas fa-wind"></i>
                     <h3>CFD & Simulation</h3>
                     <p>Numerical modeling of fluid flows, heat transfer, and combustion processes using ANSYS Fluent and OpenFoam.</p>
                 </div>
                 <div class="research-card">
+                    <i class="fas fa-leaf"></i>
                     <h3>Renewable Energy</h3>
-                    <p>Bio-fuel production, biomass pyrolysis, and optimization of energy conversion systems.</p>
+                    <p>Bio-fuel production, biomass pyrolysis, and optimization of energy conversion systems for sustainability.</p>
                 </div>
                 <div class="research-card">
+                    <i class="fas fa-layer-group"></i>
                     <h3>Advanced Materials</h3>
                     <p>Fabrication and analysis of nano-materials and eco-friendly recycled composites for automotive applications.</p>
                 </div>
                 <div class="research-card">
+                    <i class="fas fa-car-side"></i>
                     <h3>Automotive Engineering</h3>
                     <p>IC Engine performance analysis and sustainable automotive component design.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Education & Experience -->
-        <section id="education">
-            <h2 class="section-header">Education & Experience</h2>
-            
-            <!-- Education -->
-             <div class="timeline-item">
-                <div class="timeline-header">
-                    <span class="timeline-title">B.Sc. in Mechanical Engineering</span>
-                    <span class="timeline-date">Graduated: July 2025</span>
-                </div>
-                <span class="timeline-subtitle">Chittagong University of Engineering & Technology (CUET)</span>
-                
-                <!-- CGPA (Last two semesters only) -->
-                <p>CGPA (Last two semesters): 3.84 / 4.00</p>
-                
-                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">• Merit Scholarship Recipient</p>
-                
-                <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/Academic_Transcript.pdf" target="_blank" class="transcript-link">View Academic Transcript →</a>
-            </div>
-
-            <!-- Job 1 -->
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <span class="timeline-title">Research Assistant</span>
-                    <span class="timeline-date">Sep 2025 - Present</span>
-                </div>
-                <span class="timeline-subtitle">Bio-Fuel & Energy Lab, CUET</span>
-                <p>Conducting numerical and experimental investigation of Thermo-Catalytic Pyrolysis. Optimizing yield quality using data analysis.</p>
-            </div>
-
-            <!-- Job 2 -->
-            <div class="timeline-item">
-                <div class="timeline-header">
-                    <span class="timeline-title">Industrial Intern & Team Leader</span>
-                    <span class="timeline-date">Feb - Mar 2025</span>
-                </div>
-                <span class="timeline-subtitle">Super Petrochemical Limited (SPL)</span>
-                <p>Led a team of trainees in Naphtha processing and maintenance of rotating static equipment.</p>
-                
-                <!-- Added Certificate Link -->
-                <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/Super_Petrochemical_Industrial_Attachment.pdf" target="_blank" class="transcript-link">View Industrial Attachment Certificate →</a>
-            </div>
-        </section>
-
         <!-- Publications -->
         <section id="publications">
             <h2 class="section-header">Publications</h2>
-            
             <div class="pub-item">
                 <span class="pub-title">Fabrication and Performance Analysis of Automobile Brake Pad Using Eco-Friendly and Recycled Materials</span>
                 <div class="pub-authors"><strong>MD Ashraful Islam</strong>, MD Mizanur Rahman, Abu Bakkar</div>
-                <div class="pub-venue">Presented at 8th International Conference on Mechanical Engineering and Renewable Energy (2025). <strong>[Under Review]</strong></div>
+                <div class="pub-venue">Presented at 8th International Conference on Mechanical Engineering and Renewable Energy (2025). <strong style="color: #e65100;">[Under Review]</strong></div>
             </div>
         </section>
 
@@ -459,7 +649,7 @@
             <h2 class="section-header">Technical Skills</h2>
             
             <div class="skill-group">
-                <h4>Simulation & CAD</h4>
+                <h4><i class="fas fa-laptop-code" style="margin-right: 8px;"></i> Simulation & CAD</h4>
                 <div class="tags">
                     <span class="tag">ANSYS Fluent</span>
                     <span class="tag">SolidWorks</span>
@@ -470,7 +660,7 @@
             </div>
 
             <div class="skill-group">
-                <h4>Programming & Analysis</h4>
+                <h4><i class="fas fa-terminal" style="margin-right: 8px;"></i> Programming & Analysis</h4>
                 <div class="tags">
                     <span class="tag">MATLAB</span>
                     <span class="tag">Python</span>
@@ -480,7 +670,7 @@
             </div>
         </section>
 
-        <footer style="margin-top: 5rem; border-top: 1px solid #b2ebf2; padding-top: 2rem; color: #9ca3af; font-size: 0.9rem;">
+        <footer style="margin-top: 5rem; border-top: 1px solid var(--border-color); padding-top: 2rem; color: var(--text-light); font-size: 0.9rem;">
             <p>&copy; 2025 Mohammad Ashraful Islam. All Rights Reserved.</p>
         </footer>
 

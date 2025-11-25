@@ -10,12 +10,13 @@
     <style>
         :root {
             --sidebar-width: 300px;
-            --primary-color: #1e3a8a; /* Academic Navy Blue */
+            /* UPDATED: Ice Blue Theme Colors */
+            --primary-color: #006064; /* Cyan 900 - Deep Ice/Teal for text/headers */
             --text-dark: #1f2937;
-            --text-light: #6b7280;
-            --bg-light: #f3f4f6;
+            --text-light: #546e7a;    /* Blue Grey 600 */
+            --bg-light: #e0f7fa;      /* Ice Blue (Cyan 50) - The main background */
             --white: #ffffff;
-            --accent: #2563eb;
+            --accent: #00acc1;        /* Cyan 600 - Vibrant Ice accent */
         }
 
         * {
@@ -30,7 +31,7 @@
             background-color: var(--bg-light);
             display: flex;
             min-height: 100vh;
-            position: relative; /* For canvas positioning */
+            position: relative;
         }
 
         /* --- Dynamic Background Canvas --- */
@@ -40,8 +41,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Behind everything */
-            opacity: 0.6; /* Subtle effect */
+            z-index: -1;
+            opacity: 0.5; /* Slightly reduced for the brighter ice background */
         }
 
         /* --- Sidebar Styling --- */
@@ -56,7 +57,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-right: 1px solid #e5e7eb;
+            border-right: 1px solid #b2ebf2; /* Light Ice border */
             text-align: center;
             z-index: 10;
         }
@@ -66,6 +67,7 @@
             height: 150px;
             border-radius: 50%;
             object-fit: cover;
+            object-position: center; 
             margin-bottom: 1.5rem;
             border: 4px solid var(--bg-light);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -83,6 +85,17 @@
             font-size: 0.9rem;
             color: var(--text-light);
             margin-bottom: 1.5rem;
+            height: 1.5em; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #dynamic-role {
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+            font-weight: 500;
+            color: var(--accent);
         }
 
         .btn-cv {
@@ -96,7 +109,7 @@
             font-size: 0.9rem;
             margin-bottom: 2rem;
             transition: background-color 0.2s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 96, 100, 0.2);
         }
 
         .btn-cv:hover {
@@ -123,8 +136,8 @@
         }
 
         .nav-menu a:hover, .nav-menu a.active {
-            background-color: #eff6ff;
-            color: var(--accent);
+            background-color: #e0f7fa; /* Ice Blue highlight */
+            color: var(--primary-color);
         }
 
         .contact-info {
@@ -133,7 +146,7 @@
             width: 100%;
             text-align: left;
             padding-top: 1rem;
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid #b2ebf2;
         }
         
         .contact-item {
@@ -161,7 +174,7 @@
             font-size: 2rem;
             color: var(--primary-color);
             margin-bottom: 2rem;
-            border-bottom: 2px solid #e5e7eb;
+            border-bottom: 2px solid #b2ebf2;
             padding-bottom: 0.5rem;
         }
 
@@ -171,10 +184,11 @@
             line-height: 1.8;
             color: #374151;
             margin-bottom: 1.5rem;
+            text-align: justify;
         }
 
         .highlight-box {
-            background-color: rgba(239, 246, 255, 0.9); /* Slight transparency */
+            background-color: rgba(224, 247, 250, 0.7); /* Ice Blue transparent */
             border-left: 4px solid var(--accent);
             padding: 1.5rem;
             border-radius: 0 8px 8px 0;
@@ -190,17 +204,18 @@
         }
 
         .research-card {
-            background: rgba(255, 255, 255, 0.95); /* Slight transparency for background effect */
+            background: rgba(255, 255, 255, 0.9);
             padding: 1.5rem;
             border-radius: 8px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
             transition: transform 0.2s;
             backdrop-filter: blur(4px);
+            border: 1px solid #b2ebf2;
         }
         
         .research-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 172, 193, 0.15); /* Ice glow */
         }
 
         .research-card h3 {
@@ -210,11 +225,11 @@
 
         /* --- Experience & Education --- */
         .timeline-item {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.9);
             padding: 1.5rem;
             border-radius: 8px;
             margin-bottom: 1.5rem;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #b2ebf2;
             backdrop-filter: blur(4px);
         }
 
@@ -251,7 +266,7 @@
         .pub-item {
             margin-bottom: 1.5rem;
             padding-left: 1rem;
-            border-left: 3px solid #d1d5db;
+            border-left: 3px solid #cfd8dc;
         }
         .pub-title { font-weight: 600; display: block; margin-bottom: 0.2rem; }
         .pub-authors { color: var(--text-light); font-size: 0.95rem; }
@@ -262,8 +277,8 @@
         .skill-group h4 { margin-bottom: 0.5rem; font-size: 0.9rem; text-transform: uppercase; color: var(--text-light); letter-spacing: 1px; }
         .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
         .tag {
-            background: #e5e7eb;
-            color: #374151;
+            background: #b2ebf2; /* Light Ice */
+            color: #006064;      /* Deep Teal */
             padding: 4px 12px;
             border-radius: 4px;
             font-size: 0.85rem;
@@ -278,12 +293,12 @@
                 height: auto;
                 position: relative;
                 border-right: none;
-                border-bottom: 1px solid #e5e7eb;
+                border-bottom: 1px solid #b2ebf2;
                 padding: 1.5rem;
             }
-            .nav-menu { display: none; } /* Hide sidebar menu on mobile, just show profile */
+            .nav-menu { display: none; }
             .main-content { margin-left: 0; padding: 2rem; }
-            .contact-info { display: none; } /* Simplify mobile view */
+            .contact-info { display: none; }
         }
     </style>
 </head>
@@ -294,13 +309,15 @@
 
     <!-- Sidebar Profile -->
     <aside class="sidebar">
-        <!-- UPDATED: Profile Image with ?raw=true to ensure it displays -->
         <img src="https://github.com/u1903102-ux/Ashraful-web/blob/main/profile.jpg.jpg?raw=true" alt="Mohammad Ashraful Islam" class="profile-img">
         
         <h1>Mohammad<br>Ashraful Islam</h1>
-        <p>Mechanical Engineer<br>Research Assistant</p>
+        
+        <!-- Simple container for smooth fade effect -->
+        <p>
+            <span id="dynamic-role">Mechanical Engineer</span>
+        </p>
 
-        <!-- UPDATED: Added CV Download Button -->
         <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/MD_ASHRAFUL_ISLAM_CV.pdf" target="_blank" class="btn-cv">Download CV</a>
 
         <ul class="nav-menu">
@@ -377,7 +394,6 @@
                 <p>CGPA: 3.45 / 4.00 (Last two semesters: 3.84/4.00)</p>
                 <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">• Merit Scholarship Recipient</p>
                 
-                <!-- UPDATED: Added Transcript Link -->
                 <a href="https://github.com/u1903102-ux/Ashraful-web/blob/main/Academic_Transcript.pdf" target="_blank" class="transcript-link">View Academic Transcript →</a>
             </div>
 
@@ -439,24 +455,46 @@
             </div>
         </section>
 
-        <footer style="margin-top: 5rem; border-top: 1px solid #e5e7eb; padding-top: 2rem; color: #9ca3af; font-size: 0.9rem;">
+        <footer style="margin-top: 5rem; border-top: 1px solid #b2ebf2; padding-top: 2rem; color: #9ca3af; font-size: 0.9rem;">
             <p>&copy; 2025 Mohammad Ashraful Islam. All Rights Reserved.</p>
         </footer>
 
     </main>
 
     <script>
-        // Particle Network Animation
+        // --- NEW TEXT FADE EFFECT ---
+        const roles = ["Mechanical Engineer", "Research Assistant"];
+        let roleIndex = 0;
+        const textElement = document.getElementById('dynamic-role');
+
+        function changeRole() {
+            // Fade Out
+            textElement.style.opacity = 0;
+            
+            setTimeout(() => {
+                // Change Text
+                roleIndex = (roleIndex + 1) % roles.length;
+                textElement.textContent = roles[roleIndex];
+                
+                // Fade In
+                textElement.style.opacity = 1;
+            }, 500); 
+        }
+
+        // Change role every 3 seconds
+        setInterval(changeRole, 3000);
+
+
+        // --- PARTICLE NETWORK ANIMATION ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         
         let particles = [];
-        const particleCount = 60; // Number of nodes
-        const connectionDistance = 150; // Distance to draw lines
+        const particleCount = 60; 
+        const connectionDistance = 150; 
         
         let width, height;
 
-        // Resize function
         function resize() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
@@ -466,8 +504,8 @@
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5; // Velocity X
-                this.vy = (Math.random() - 0.5) * 0.5; // Velocity Y
+                this.vx = (Math.random() - 0.5) * 0.5; 
+                this.vy = (Math.random() - 0.5) * 0.5; 
                 this.size = Math.random() * 2 + 1;
             }
 
@@ -475,13 +513,13 @@
                 this.x += this.vx;
                 this.y += this.vy;
 
-                // Bounce off edges
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
 
             draw() {
-                ctx.fillStyle = '#cbd5e1'; // Light grey-blue for nodes
+                // UPDATED: Cool Ice Cyan for nodes
+                ctx.fillStyle = '#4dd0e1'; 
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -502,7 +540,6 @@
                 particles[i].update();
                 particles[i].draw();
 
-                // Draw connections (CFD Mesh look)
                 for (let j = i; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
@@ -510,7 +547,8 @@
 
                     if (distance < connectionDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(148, 163, 184, ${1 - distance / connectionDistance})`; // Fade line
+                        // UPDATED: Ice Cyan lines with fade
+                        ctx.strokeStyle = `rgba(38, 198, 218, ${1 - distance / connectionDistance})`; 
                         ctx.lineWidth = 1;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -521,7 +559,6 @@
             requestAnimationFrame(animate);
         }
 
-        // Initialize
         window.addEventListener('resize', resize);
         init();
         animate();
